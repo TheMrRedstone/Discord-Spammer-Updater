@@ -1,4 +1,3 @@
-a
 # Init The Modules From The Import And Import The Modules
 from base64 import decode
 from email.header import decode_header
@@ -13,6 +12,7 @@ import time
 import os
 import pyautogui
 import urllib.request
+from pathlib import Path
 
 # Init Variables
 url = "https://themrredstone.github.io/Discord-Spammer-Updater/currentVersion.txt"
@@ -29,8 +29,12 @@ for line in file:
     print(newVersion)
     if newVersion > version:
         print("A New Version Is Available! New Version: v" + newVersion + " Current Version: v" + version)
+        subprocess.call('start settings/Updater.py', shell=True)
+        time.sleep(1)
+        sys.exit()
     else:
         print("Your Up To Date")
+    
 
 os.system("taskkill /f /im Discord.exe")
 
